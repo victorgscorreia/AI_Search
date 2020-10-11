@@ -55,8 +55,8 @@ class DisplayMaze:
 
 
 
-    def drawStep(self, x_maze, y_maze):
-        pygame.draw.rect(self.screen, [255, 203, 219], [x_maze*(self.size_block+1), y_maze*(self.size_block+1), self.size_block, self.size_block], 0)
+    def drawStep(self, x_maze, y_maze,color):
+        pygame.draw.rect(self.screen, color, [y_maze*(self.size_block+1), x_maze*(self.size_block+1), self.size_block, self.size_block], 0)
         pygame.display.flip()
 
     def status(self):
