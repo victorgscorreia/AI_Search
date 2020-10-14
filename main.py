@@ -415,7 +415,7 @@ def main():
     maze_matrix,ini,end = creat_matrix_np(maze_string, size)
 
 
-    display = dw.DisplayMaze(800, 800, maze_string)
+    display = dw.DisplayMaze(720, 480, maze_string)
     
     
     ant_i,ant_j,c_v,c_q,max_tam_queue = profundidade(maze_matrix,ini,end,size,display)
