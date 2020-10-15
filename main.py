@@ -53,8 +53,10 @@ def creat_matrix_np(maze_string, size):
     return maze_matrix,ini,end
 
 
-def main():
+def analise():
+    i = 1
 
+def visualizacao():
     maze_string, size = read_maze()
     maze_matrix,ini,end = creat_matrix_np(maze_string, size)
 
@@ -73,5 +75,9 @@ def main():
     while display.status():
         i = 1+1
     display.quit()
+
+def main():
+    visualizacao()
+    
 if __name__ == '__main__':
     main()
