@@ -92,7 +92,7 @@ def heuristica_euclidiana(i,j, i_target, j_target):
     b = j - j_target
     return np.sqrt(a*a + b*b)
 
-def A_Star(maze_matrix,ini,end, size, heuristica,display):
+def A_Star(maze_matrix,ini,end, size, heuristica,display=None):
 
     visitado = np.zeros((size[0],size[1]))
     anterior_i = -1*np.ones((size[0],size[1]))
@@ -151,7 +151,7 @@ def A_Star(maze_matrix,ini,end, size, heuristica,display):
             
     return None,None, count_visited, count_in_queue, max_tam_queue
 
-def largura(maze_matrix,ini,end, size,display):
+def largura(maze_matrix,ini,end, size,display=None):
 
     visitado = np.zeros((size[0],size[1]))
     anterior_i = -1*np.ones((size[0],size[1]))
@@ -201,7 +201,7 @@ def largura(maze_matrix,ini,end, size,display):
             
     return None,None, count_visited, count_in_queue, max_tam_queue
 
-def profundidade(maze_matrix,ini,end, size,display):
+def profundidade(maze_matrix,ini,end, size,display=None):
 
     visitado = np.zeros((size[0],size[1]))
     anterior_i = -1*np.ones((size[0],size[1]))
@@ -251,7 +251,7 @@ def profundidade(maze_matrix,ini,end, size,display):
             
     return None,None, count_visited, count_in_queue, max_tam_queue
 
-def bfs(maze_matrix,ini,end, size, heuristica,display):
+def bfs(maze_matrix,ini,end, size, heuristica,display=None):
     visitado = np.zeros((size[0],size[1]))
     anterior_i = -1*np.ones((size[0],size[1]))
     anterior_j = -1*np.ones((size[0],size[1]))
@@ -308,7 +308,7 @@ def bfs(maze_matrix,ini,end, size, heuristica,display):
             
     return None,None, count_visited, count_in_queue, max_tam_queue
 
-def hill_climbing(maze_matrix,ini,end, size, heuristica,display):
+def hill_climbing(maze_matrix,ini,end, size, heuristica,display=None):
 
     visitado = np.zeros((size[0],size[1]))
     anterior_i = -1*np.ones((size[0],size[1]))
