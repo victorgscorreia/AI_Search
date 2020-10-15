@@ -38,14 +38,15 @@ def next_steps(element,size,visitado,maze_matrix):
 def print_caminho(i,j, anterior_i, anterior_j, display,ini,end):
     i = int(i)
     j = int(j)
-    ret = 1
-    if anterior_i[i][j] != -1:
-        ret += print_caminho( anterior_i[i][j], anterior_j[i][j], anterior_i,anterior_j,display,ini,end ) 
     
+    ret = []
+    if anterior_i[i][j] != -1:
+        ret = print_caminho( anterior_i[i][j], anterior_j[i][j], anterior_i,anterior_j,display,ini,end ) 
+
     if display is not None and ( i != ini[0] or j != ini[1]) and (i != end[0] or j != end[1]):
         display.drawStep(i,j,COLOR_RIGHT_PATH)
     time.sleep(TIME_WAIT)  
-
+    ret.append( (i,j) )
     return ret
 
 class Cell:

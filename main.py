@@ -65,12 +65,10 @@ def main():
     ant_i,ant_j,c_v,c_q,max_tam_queue = profundidade(maze_matrix,ini,end,size,display)
     tam_caminho = 0
     if ant_i is not None:
-        tam_caminho = print_caminho(end[0], end[1],ant_i, ant_j,display,ini,end)
-
-    print("numero visitados = " + str(c_v))
-    print("numero colocados na fila = " + str(c_q))
-    print("tamanho maximo da estrutura de dados = " + str(max_tam_queue))
-    print("tamanho do caminho achado = " + str(tam_caminho))
+        caminho = print_caminho(end[0], end[1],ant_i, ant_j,display,ini,end)
+        print(caminho)
+    else:
+        print("Nao foi encontrado caminho algum")
 
     while display.status():
         i = 1+1
