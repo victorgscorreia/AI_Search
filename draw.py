@@ -10,7 +10,7 @@ class DisplayMaze:
         self.height = height
         self.maze = maze
         self.screen = pygame.display.set_mode([width,height])
-        self.screen.fill([75, 160, 255])
+        self.screen.fill([67, 67, 67])
 
         lines = maze.split('\n')
         

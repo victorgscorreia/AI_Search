@@ -145,10 +145,10 @@ def visualizacao():
     maze_matrix,ini,end = creat_matrix_np(maze_string, size)
 
 
-    display = dw.DisplayMaze(800, 800, maze_string)
+    display = dw.DisplayMaze(800, 640, maze_string)
     
     
-    ant_i,ant_j,c_v,c_q,max_tam_queue = bfs(maze_matrix,ini,end,size,display=display)
+    ant_i,ant_j,c_v,c_q,max_tam_queue = A_Star(maze_matrix,ini,end,size,heuristica_manhattan,display=display)
     tam_caminho = 0
     if ant_i is not None:
         caminho = print_caminho(end[0], end[1],ant_i, ant_j,display,ini,end)
@@ -161,7 +161,7 @@ def visualizacao():
     display.quit()
 
 def main():
-    analise()
+    visualizacao()
     
 if __name__ == '__main__':
     main()

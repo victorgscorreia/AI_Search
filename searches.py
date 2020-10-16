@@ -44,6 +44,7 @@ def print_caminho(i,j, anterior_i, anterior_j, display,ini,end):
         ret = print_caminho( anterior_i[i][j], anterior_j[i][j], anterior_i,anterior_j,display,ini,end ) 
 
     if display is not None and ( i != ini[0] or j != ini[1]) and (i != end[0] or j != end[1]):
+        display.status()
         display.drawStep(i,j,COLOR_RIGHT_PATH)
     time.sleep(TIME_WAIT)  
     ret.append( (i,j) )
@@ -131,6 +132,7 @@ def A_Star(maze_matrix,ini,end, size, heuristica,display=None):
 
         for n in nexts:
             if display is not None and (n[0] != end[0] or n[1] != end[1]):
+                display.status()
                 display.drawStep(n[0],n[1],COLOR_IN_QUEUE)
 
             anterior_i[n[0]][n[1]] = ele[0]
@@ -146,6 +148,7 @@ def A_Star(maze_matrix,ini,end, size, heuristica,display=None):
         
         #nao pintar o ultimo nem o primeiro
         if display is not None and (ele[0] != ini[0] or ele[1] != ini[1]):
+            display.status()
             display.drawStep(ele[0],ele[1],COLOR_VISITED)
             time.sleep(TIME_WAIT)
             
@@ -182,6 +185,7 @@ def largura(maze_matrix,ini,end, size,display=None):
 
         for n in nexts:
             if display is not None and (n[0] != end[0] or n[1] != end[1]):
+                display.status()
                 display.drawStep(n[0],n[1],COLOR_IN_QUEUE)
 
             anterior_i[n[0]][n[1]] = ele[0]
@@ -196,6 +200,7 @@ def largura(maze_matrix,ini,end, size,display=None):
         
         #nao pintar o ultimo nem o primeiro
         if display is not None and (ele[0] != ini[0] or ele[1] != ini[1]):
+            display.status()
             display.drawStep(ele[0],ele[1],COLOR_VISITED)
             time.sleep(TIME_WAIT)
             
@@ -232,6 +237,7 @@ def profundidade(maze_matrix,ini,end, size,display=None):
 
         for n in nexts:
             if display is not None and (n[0] != end[0] or n[1] != end[1]):
+                display.status()
                 display.drawStep(n[0],n[1],COLOR_IN_QUEUE)
 
             anterior_i[n[0]][n[1]] = ele[0]
@@ -246,6 +252,7 @@ def profundidade(maze_matrix,ini,end, size,display=None):
         
         #nao pintar o ultimo nem o primeiro
         if display is not None and (ele[0] != ini[0] or ele[1] != ini[1]):
+            display.status()
             display.drawStep(ele[0],ele[1],COLOR_VISITED)
             time.sleep(TIME_WAIT)
             
@@ -288,6 +295,7 @@ def bfs(maze_matrix,ini,end, size, heuristica,display=None):
 
         for n in nexts:
             if display is not None and (n[0] != end[0] or n[1] != end[1]):
+                display.status()
                 display.drawStep(n[0],n[1],COLOR_IN_QUEUE)
 
             anterior_i[n[0]][n[1]] = ele[0]
@@ -304,6 +312,7 @@ def bfs(maze_matrix,ini,end, size, heuristica,display=None):
         #nao pintar o ultimo nem o primeiro
         if display is not None and (ele[0] != ini[0] or ele[1] != ini[1]):
             display.drawStep(ele[0],ele[1],COLOR_VISITED)
+            display.status()
             time.sleep(TIME_WAIT)
             
     return None,None, count_visited, count_in_queue, max_tam_queue
@@ -361,6 +370,7 @@ def hill_climbing(maze_matrix,ini,end, size, heuristica,display=None):
             q.put(min_cell)
         #nao pintar o ultimo nem o primeiro
         if display is not None and (ele[0] != ini[0] or ele[1] != ini[1]):
+            display.status()
             display.drawStep(ele[0],ele[1],COLOR_VISITED)
             time.sleep(TIME_WAIT)
             
