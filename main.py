@@ -53,6 +53,32 @@ def creat_matrix_np(maze_string, size):
 
     return maze_matrix,ini,end
 
+
+'''
+TESTE_BUSCA
+    Esta funcao faz a analise de uma busca em uma mze rodando num_teste e tirando
+    a media, em caso de busca heuristica, tambem deve se passar a busca heuristica
+    @PARAMETROS
+        busca - a busca que sera rodada, o nome de uma funcao de searches.py
+        maze_matrix - a matriz que representa nosso maze
+        size - vetor de dimensao 2, o tamanho do maze
+        ini - elemento inicial da busca
+        end - elemento destino
+        tam_caminho_otimo - tamanho do caminho otimo - para comparar
+                se achou o caminho otimo
+        num_testes - numero de teste que se vai rodar o teste
+        heuristica - heuristica a ser utilizada, no nome da funcao de searches.py,
+                    se for um busca cega, heuristica deve ser None
+    @RETORNO
+        retorna uma quadrupla:
+            tempo_medio, memoria_media,  por_achou, por_cam_otimo
+        onde cada um desses valores siginifica:
+
+            tempo_medio - tempo medio de execucao da busca
+            memoria_media - memoria media utilizada pela busca
+            por_achou - porcentagem de vezes que a busca achou algum caminho
+            por_cam_otimo - porcentagem de vezes que a busca achou um caminho otimo
+'''
 def teste_busca(busca,maze_matrix,size,ini,end,tam_caminho_otimo,num_testes=100, heuristica=None):
     tempo_medio = 0
     achou = 0
@@ -93,12 +119,19 @@ def teste_busca(busca,maze_matrix,size,ini,end,tam_caminho_otimo,num_testes=100,
 
     return tempo_medio, memoria_media,  por_achou, por_cam_otimo
 
+
+'''
+ANALISE
+    Esta funcao roda todos os mazes de mazes_created
+    em todas as bucas utilizando todas as heuristicas
+    e printa os resultado na saida padrao
+'''
 def analise():
     num_mazes = 8
     maze_files = []
     buscas_cega = [largura,profundidade]
     buscas_heuristica = [bfs,A_Star,hill_climbing]
-    heuristicas = [heuristica_manhattan]
+    heuristicas = [heuristica_manhattan, heuristica_euclidiana]
     num_testes = 50
 
     for i in range(num_mazes):
@@ -139,16 +172,35 @@ def analise():
                 print("ME:  " + str(memoria_media))
                 print("PA:  " + str(por_achou))
                 print("PAO: " + str(por_cam_otimo))
-            
-def visualizacao():
+
+'''
+VISUALIZACAO
+    Funcao que representa a main padrao como pedido na especificacao do
+    trabalho, o trabalho le o maze na saida padrao e executa a busca,
+    feixe a janela da visualizacao para finalizar a execucao
+    
+    @PARAMETROS
+        busca - a busca que sera rodada, o nome de uma funcao de searches.py
+        heuristica - heuristica a ser utilizada, no nome da funcao de searches.py,
+            se for um busca cega, heuristica deve ser None
+'''         
+def visualizacao(busca, heuristica=None):
     maze_string, size = read_maze()
     maze_matrix,ini,end = creat_matrix_np(maze_string, size)
 
 
-    display = dw.DisplayMaze(800, 640, maze_string)
+    display = dw.DisplayMaze(800, 800, maze_string)
     
-    
-    ant_i,ant_j,c_v,c_q,max_tam_queue = A_Star(maze_matrix,ini,end,size,heuristica_manhattan,display=display)
+    ant_i = None
+    ant_j = None
+    c_v = -1
+    c_q = -1
+    max_tam_queue = -1
+    if heuristica is not None:
+        ant_i,ant_j,c_v,c_q,max_tam_queue = busca(maze_matrix,ini,end,size,heuristica,display=display)
+    else:
+        ant_i,ant_j,c_v,c_q,max_tam_queue = busca(maze_matrix,ini,end,size,display=display)
+
     tam_caminho = 0
     if ant_i is not None:
         caminho = print_caminho(end[0], end[1],ant_i, ant_j,display,ini,end)
@@ -161,7 +213,28 @@ def visualizacao():
     display.quit()
 
 def main():
-    visualizacao()
+    #deixe apenas um comentado
+    #nao deixa mais de um ou nenhum executando
+
+    #analise()
+
+    #LARGURA
+    #visualizacao(largura,None)
+
+    #PROFUNDIDADE
+    #visualizacao(profundidade,None)
+
+    #BFS
+    #visualizacao(bfs, heuristica_manhattan)
+    #visualizacao(bfs, heuristica_euclidiana)
+
+    #A* - A Estrela
+    #visualizacao(bfs, heuristica_manhattan)
+    #visualizacao(bfs, heuristica_euclidiana)
+
+    #Hill Climbing
+    #visualizacao(hill_climbing, heuristica_manhattan)
+    visualizacao(hill_climbing, heuristica_euclidiana)
     
 if __name__ == '__main__':
     main()
