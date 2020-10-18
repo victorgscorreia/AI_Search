@@ -189,7 +189,7 @@ def visualizacao(busca, heuristica=None):
     maze_matrix,ini,end = creat_matrix_np(maze_string, size)
 
 
-    display = dw.DisplayMaze(800, 800, maze_string)
+    display = dw.DisplayMaze(800, 600, maze_string)
     
     ant_i = None
     ant_j = None
@@ -230,11 +230,10 @@ def main():
 
     #A* - A Estrela
     #visualizacao(bfs, heuristica_manhattan)
-    #visualizacao(bfs, heuristica_euclidiana)
+    visualizacao(bfs, heuristica_euclidiana)
 
     #Hill Climbing
     #visualizacao(hill_climbing, heuristica_manhattan)
-    visualizacao(hill_climbing, heuristica_euclidiana)
-    
+    #visualizacao(hill_climbing, heuristica_euclidiana)
 if __name__ == '__main__':
     main()
