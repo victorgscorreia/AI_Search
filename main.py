@@ -79,7 +79,7 @@ TESTE_BUSCA
             por_achou - porcentagem de vezes que a busca achou algum caminho
             por_cam_otimo - porcentagem de vezes que a busca achou um caminho otimo
 '''
-def teste_busca(busca,maze_matrix,size,ini,end,tam_caminho_otimo,num_testes=100, heuristica=None):
+def teste_busca(busca,maze_matrix,size,ini,end,tam_caminho_otimo,num_testes=1000, heuristica=None):
     tempo_medio = 0
     achou = 0
     c_v_media = 0
@@ -229,8 +229,8 @@ def main():
     #visualizacao(bfs, heuristica_euclidiana)
 
     #A* - A Estrela
-    #visualizacao(bfs, heuristica_manhattan)
-    visualizacao(bfs, heuristica_euclidiana)
+    #visualizacao(A_Star, heuristica_manhattan)
+    visualizacao(A_Star, heuristica_euclidiana)
 
     #Hill Climbing
     #visualizacao(hill_climbing, heuristica_manhattan)
