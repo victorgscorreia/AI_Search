@@ -3,7 +3,6 @@ import draw as dw
 import time
 import queue
 import random
-from tqdm import tqdm
 from searches import *
 
 def read_maze():
