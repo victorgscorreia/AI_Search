@@ -229,8 +229,8 @@ def main():
     #visualizacao(bfs, heuristica_euclidiana)
 
     #A* - A Estrela
-    #visualizacao(A_Star, heuristica_manhattan)
-    visualizacao(A_Star, heuristica_euclidiana)
+    visualizacao(A_Star, heuristica_manhattan)
+    #visualizacao(A_Star, heuristica_euclidiana)
 
     #Hill Climbing
     #visualizacao(hill_climbing, heuristica_manhattan)
